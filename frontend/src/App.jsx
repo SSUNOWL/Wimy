@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { getDDayInfo } from './utils/dateUtils';
 import IngredientForm from './components/IngredientForm';
 import IngredientTable from './components/IngredientTable';
