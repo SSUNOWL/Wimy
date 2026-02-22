@@ -1,0 +1,4 @@
+wimy_mysql_data/
+.gradle/
+build/
+!build/libs/*.jar
