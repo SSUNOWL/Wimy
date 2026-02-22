@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/ingredients")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173") // 리액트 서버의 주소를 허용합니다.
 public class IngredientController {
 
     private final IngredientRepository ingredientRepository;
@@ -37,7 +38,8 @@ public class IngredientController {
                 updatedIngredient.getName(),
                 updatedIngredient.getQuantity(),
                 updatedIngredient.getExpiredAt(),
-                updatedIngredient.getCategory()
+                updatedIngredient.getCategory(),
+                updatedIngredient.getUnit()
         );
 
         return ingredientRepository.save(ingredient);

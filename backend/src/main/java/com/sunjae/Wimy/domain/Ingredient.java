@@ -2,10 +2,13 @@ package com.sunjae.Wimy.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDate;
 
 @Entity
 @Getter
+@Setter
 public class Ingredient {
 
     @Id
@@ -20,11 +23,14 @@ public class Ingredient {
 
     private String category;    // 분류 (냉장, 냉동 등)
 
-    public void updateInfo(String name, Integer quantity, LocalDate expiredAt, String category) {
+    private String unit; // '개', '병', '보유' 등
+
+    public void updateInfo(String name, Integer quantity, LocalDate expiredAt, String category, String unit) {
         this.name = name;
         this.quantity = quantity;
         this.expiredAt = expiredAt;
         this.category = category;
+        this.unit = unit;
     }
 
     // 비즈니스 로직이 담긴 전용 메서드 (예: 재료 사용)
