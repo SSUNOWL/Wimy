@@ -6,7 +6,7 @@ import IngredientTable from './components/IngredientTable';
 import RecipeForm from './components/RecipeForm';
 import RecipeList from './components/RecipeList';
 import './App.css';
-
+import api from './utils/axios';
 function App() {
   const [ingredients, setIngredients] = useState([]);
   const [recipes, setRecipes] = useState([]);
@@ -28,14 +28,14 @@ function App() {
 
   const fetchIngredients = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/ingredients');
+      const response = await api.get('/api/ingredients');
       setIngredients(response.data);
     } catch (error) { console.error("조회 실패:", error); }
   };
 
   const fetchRecipes = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/recipes');
+      const response = await api.get('/api/recipes');
       setRecipes(response.data);
     } catch (error) { console.error("레시피 조회 실패:", error); }
   };
@@ -49,7 +49,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/api/ingredients', form);
+      await api.post('/api/ingredients', form);
       alert('추가되었습니다.');
       setForm({ name: '', quantity: 0, expiredAt: '', category: '냉장', unit: '개' });
       fetchIngredients();
@@ -59,7 +59,7 @@ function App() {
   const handleDelete = async (id) => {
     if (window.confirm('정말 이 식재료를 삭제하시겠습니까?')) {
       try {
-        await axios.delete(`http://localhost:8080/api/ingredients/${id}`);
+        await api.delete(`/api/ingredients/${id}`);
         fetchIngredients();
       } catch (error) { console.error("삭제 실패:", error); }
     }
@@ -72,7 +72,7 @@ function App() {
 
   const handleUpdate = async (id) => {
     try {
-      await axios.put(`http://localhost:8080/api/ingredients/${id}`, editForm);
+      await api.put(`/api/ingredients/${id}`, editForm);
       setEditingId(null);
       fetchIngredients();
     } catch (error) { console.error("수정 실패:", error); }
@@ -81,7 +81,7 @@ function App() {
   const handleRecipeSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:8080/api/recipes', recipeForm);
+      await api.post('/api/recipes', recipeForm);
       alert('레시피가 등록되었습니다.');
       setRecipeForm({ name: '', recipeItems: [{ ingredientName: '', requiredQuantity: 1 }] });
       fetchRecipes();
@@ -100,7 +100,7 @@ function App() {
     }
 
     try {
-      const response = await axios.post(`http://localhost:8080/api/recipes/${recipe.id}/use`);
+      const response = await api.post(`/api/recipes/${recipe.id}/use`);
       alert(response.data);
       fetchIngredients();
     } catch (error) {
@@ -127,7 +127,7 @@ function App() {
   const handleRecipeDelete = async (id) => {
     if (window.confirm('이 레시피를 삭제하시겠습니까?')) {
       try {
-        await axios.delete(`http://localhost:8080/api/recipes/${id}`);
+        await api.delete(`/api/recipes/${id}`);
         fetchRecipes();
       } catch (error) { console.error("삭제 실패:", error); }
     }
@@ -140,7 +140,7 @@ function App() {
 
   const handleRecipeUpdate = async (id) => {
     try {
-      await axios.put(`http://localhost:8080/api/recipes/${id}`, recipeEditForm);
+      await api.put(`/api/recipes/${id}`, recipeEditForm);
       setEditingRecipeId(null);
       fetchRecipes();
     } catch (error) { console.error("레시피 수정 실패:", error); }

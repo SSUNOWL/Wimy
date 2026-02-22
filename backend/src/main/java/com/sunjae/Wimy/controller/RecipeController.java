@@ -12,7 +12,6 @@ import lombok.*;
 @RestController
 @RequestMapping("/api/recipes")
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
 public class RecipeController {
 
     private final RecipeRepository recipeRepository;
