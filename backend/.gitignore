@@ -38,3 +38,4 @@ out/
 w
 ### Database ###
 wimy_mysql_data/
+.env

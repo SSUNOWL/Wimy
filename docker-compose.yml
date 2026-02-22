@@ -1,6 +1,5 @@
 version: '3.8'
 services:
-  # 1. Database 설정
   db:
     image: mysql:8.0
     container_name: wimy-db
@@ -14,9 +13,8 @@ services:
     networks:
       - wimy-network
 
-  # 2. Spring Boot Application 설정
   app:
-    build: .
+    build: ./backend             # . 에서 ./backend 로 수정
     container_name: wimy-app
     ports:
       - "8080:8080"
@@ -26,6 +24,19 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/fridge_db?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - wimy-network
+
+  frontend:
+    build: ./frontend            # . 에서 ./frontend 로 수정
+    container_name: wimy-frontend
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app          # 상대 경로가 ./frontend로 변경됨
+      - /app/node_modules
+    depends_on:
+      - app
     networks:
       - wimy-network
 

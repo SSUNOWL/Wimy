@@ -1,0 +1,5 @@
+.env
+wimy_mysql_data/
+frontend/node_modules/
+backend/build/
+.idea/  # IDE 설정 파일
