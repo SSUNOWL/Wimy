@@ -1,6 +1,11 @@
-# Wimy (What's in my Refrigerator)
+Wimy (What's in my Refrigerator)
 
 Wimy는 효율적인 식재료 관리와 스마트한 레시피 활용을 돕는 웹 애플리케이션입니다. 사용자는 냉장고 안의 재료를 카테고리별로 관리하고, 유통기한을 실시간으로 추적하며, 등록된 레시피를 통해 재고를 지능적으로 소진할 수 있습니다.
+
+## 예시 사진
+<img width="1137" height="129" alt="image" src="https://github.com/user-attachments/assets/c6a1b294-f57b-4e5d-be6c-9b68e56cafdd" />
+<img width="1146" height="771" alt="image" src="https://github.com/user-attachments/assets/7543d3e7-36bc-46ae-9fa7-6245008b8077" />
+<img width="1140" height="385" alt="image" src="https://github.com/user-attachments/assets/4c344435-c6ca-471b-b436-8e9b5f4d1291" />
 
 ---
 
